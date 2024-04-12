@@ -66,6 +66,25 @@ body {
     background-color: #fff;
     margin-right: 30px;
     border-radius: 5px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    height: auto;
+    /* Đặt chiều cao tự động */
+}
+
+/* Làm cho thanh cuộn nhỏ hơn */
+.task-column::-webkit-scrollbar {
+    width: 6px;
+}
+
+.task-column::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.task-column::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Màu của thanh cuộn */
+    border-radius: 3px;
 }
 
 .task-column:last-child {
@@ -118,6 +137,9 @@ body {
     border-radius: 5px;
     position: relative;
     font-size: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 .task-column h2::after {
@@ -135,7 +157,7 @@ body {
     background-color: #fbfcff;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 10px 20px;
     /* display: flex;
     flex-direction: column;

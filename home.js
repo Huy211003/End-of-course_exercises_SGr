@@ -395,4 +395,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     updateTaskCounts();
 
+    // Đặt chiều cao cho các cột dựa trên nội dung của chúng
+    function setColumnHeight() {
+        const taskColumns = document.querySelectorAll('.task-column');
+        taskColumns.forEach(column => {
+            const contentHeight = column.scrollHeight;
+            column.style.height = `${contentHeight}px`;
+        });
+    }
+
+    // Gọi hàm khi tài liệu được tải và khi kích thước cửa sổ thay đổi
+    window.addEventListener('DOMContentLoaded', setColumnHeight);
+    window.addEventListener('resize', setColumnHeight);
+
 }); 
