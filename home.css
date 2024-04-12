@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.container {
+    /* max-width: 1200px; */
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.logo {
+    margin-right: 10px;
+}
+
+/* .logo h1 {
+    margin: 0;
+} */
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+.logo p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.new-task-btn {
+    background-color: #fff;
+    color: #707070;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.new-task-btn:hover {
+    background-color: #ccc;
+}
+
+.task-columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.task-column {
+    flex: 1;
+    background-color: #fff;
+    margin-right: 30px;
+    border-radius: 5px;
+}
+
+.task-column:last-child {
+    margin-right: 0;
+}
+
+.todo-header {
+    background-color: #00a6da;
+    color: #fff;
+}
+
+.doing-header {
+    background-color: #e3d072;
+    color: #fff;
+}
+
+.completed-header {
+    background-color: #3bc057;
+    color: #fff;
+}
+
+.blocked-header {
+    background-color: #e84c3d;
+    color: #fff;
+}
+
+.todo-header,
+.doing-header,
+.completed-header,
+.blocked-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.task-count {
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.task-column h2 {
+    /* display: inline-block; */
+    width: 100%;
+    margin-top: 0;
+    padding: 5px;
+    border-radius: 5px;
+    position: relative;
+    font-size: 14px;
+}
+
+.task-column h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: inherit;
+    border-radius: 5px;
+}
+
+.task {
+    background-color: #fbfcff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    padding: 10px 20px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: start; */
+}
+
+.task-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* width: 100%; */
+}
+
+.task-type-title {
+    /* display: flex;
+    flex-direction: column; */
+    position: relative;
+}
+
+.task-type-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    height: 0.5px;
+    background-color: #c1c1c1;
+    border-radius: 5px;
+}
+
+.task-type {
+    font-size: 12px;
+    color: #4c8efe;
+    margin-bottom: 5px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.task-title {
+    font-size: 14px;
+    margin: 0;
+    color: #393939;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.task-buttons {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    /* Đặt task-buttons ở trên */
+    margin-left: 10px;
+}
+
+.btn-edit,
+.btn-delete {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn-edit i,
+.btn-delete i {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.btn-edit i:hover {
+    color: #48f29a;
+}
+
+.btn-delete i:hover {
+    color: #e21e1e;
+}
+
+.task-description {
+    margin-top: 35px;
+    font-size: 12px;
+    color: #8a8c91;
+}
+
+.task-date {
+    font-size: 10px;
+    color: #8a8c91;
+    margin-top: 10px;
+    padding: 10px 0 20px 0;
+}
+
+/* CSS cho form thêm task mới, edit task */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Màu đen với độ mờ 50% */
+    display: none;
+    /* Mặc định ẩn lớp overlay */
+    z-index: 999;
+    /* Đặt z-index cao hơn các phần tử khác */
+}
+
+.add-task-form,
+.edit-task-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    /* Đặt z-index cao hơn */
+    opacity: 1;
+    /* Hiển thị đầy đủ khi form được hiển thị */
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.close-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#task-form,
+#edit-task-form-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type='text'],
+textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Định dạng các input và textarea khi có lớp error */
+input.error,
+textarea.error {
+    border-color: red;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+
+/* Hiệu ứng khi kéo task */
+.task.dragging {
+    opacity: 0.5;
+}
