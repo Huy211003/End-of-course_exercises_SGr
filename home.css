@@ -171,6 +171,12 @@ body {
     /* width: 100%; */
 }
 
+.task-type,
+.task-title,
+.task-description {
+    word-break: break-all;
+}
+
 .task-type-title {
     /* display: flex;
     flex-direction: column; */
@@ -347,4 +353,61 @@ textarea.error {
 /* Hiệu ứng khi kéo task */
 .task.dragging {
     opacity: 0.5;
+}
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        /* Thêm padding cho container khi ở chế độ dọc */
+    }
+
+    .logo-container {
+        flex-direction: column;
+        align-items: center;
+        /* Canh giữa các phần tử trong logo-container */
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .logo img {
+        width: 150px;
+        height: auto;
+    }
+
+    .logo > p {
+        font-size: small;
+    }
+    .new-task-btn {
+        border-radius: 5px;
+        border: solid 1px #ccc;
+        padding: 5px 10px;
+        margin-top: 20px;
+    }
+
+    .task-columns {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .task-column {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .task-column:last-child {
+        margin-bottom: 0;
+    }
 }
