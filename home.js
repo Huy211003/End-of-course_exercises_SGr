@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function getTaskStatus(index) {
-        return tasks[index].column;
+        return tasks[index] ? tasks[index].column : null;
     }
 
     function selectRadioButtonForTaskEdit(index) {
